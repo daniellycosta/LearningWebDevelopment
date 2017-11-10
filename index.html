@@ -7,12 +7,6 @@
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	
-	<style>
-		
-	</style>
-</head>
-
-<body>
 	<style type="text/css">
 		.celulajogo>input{
 			width: 100%;
@@ -21,8 +15,11 @@
 			margin-bottom:10px;
 		}
 	</style>
+</head>
 
-	<div class="jumbotron text-center">
+<body>
+
+	<div class="jumbotron text-center col-xs-12">
 		<h1> Equilíbrio de Nash em Jogos Fictícios </h1>
 		<h3>Para jogos de dois jogadores</h3>
 	</div>
@@ -31,43 +28,62 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<h2>Configurations:</h2>
-				<form action="javascript:deucerto()">
+				<form action="javascript:getFormValues()" name = "config">
 					<h3>Player 1:</h3>
 					<div class="celulajogo col-xs-12 col-sm-6">
-						<label>Action 2: </label><br>
-						<input type="text" placeholder="" name="Pl1Action2">
+						<label>Action 1: </label><br>
+						<input type="text" placeholder="" id="Pl1Action1">
+					</div>
+					<div class="celulajogo col-xs-12 col-sm-6">
+						<label>Value: </label><br>
+						<input type="text" placeholder="" id="Pl1Value1">
 					</div>
 					<div class="celulajogo col-xs-12 col-sm-6">
 						<label>Action 2: </label><br>
-						<input type="text" placeholder="" name="Pl1Action2">
+						<input type="text" placeholder="" id="Pl1Action2">
+					</div>
+					<div class="celulajogo col-xs-12 col-sm-6">
+						<label>Value: </label><br>
+						<input type="text" placeholder="" id="Pl1Value2">
+					</div>
+					<h3>Player 2:</h3>
+					<div class="celulajogo col-xs-12 col-sm-6">
+						<label>Action 1: </label><br>
+						<input type="text" placeholder="" id="Pl2Action1">
+					</div>
+					<div class="celulajogo col-xs-12 col-sm-6">
+						<label>Value: </label><br>
+						<input type="text" placeholder="" id="Pl2Value1">
 					</div>
 					<div class="celulajogo col-xs-12 col-sm-6">
 						<label>Action 2: </label><br>
-						<input type="text" placeholder="" name="Pl1Action2">
+						<input type="text" placeholder="" id="Pl2Action2">
 					</div>
 					<div class="celulajogo col-xs-12 col-sm-6">
-						<label>Action 2: </label><br>
-						<input type="text" placeholder="" name="Pl1Action2">
+						<label>Value: </label><br>
+						<input type="text" placeholder="" id="Pl2Value2">
 					</div>
-					<div class="celulajogo col-xs-12 col-sm-6">
-						<label>Action 2: </label><br>
-						<input type="text" placeholder="" name="Pl1Action2">
-					</div>
-					<div class="celulajogo col-xs-12 col-sm-6">
-						<label>Action 2: </label><br>
-						<input type="text" placeholder="" name="Pl1Action2">
-					</div>
-					
 					<button type="submit">Save Changes</button> 
-
-
 				</form>
 			</div>
 		</div>
 	</div>
 	<script type="text/javascript">
-		function deucerto(){
-			console.log("deu certo demais")
+		function getFormValues(){
+			//var p1Actions = document.getElementById("Pl1Action1").value;
+			//p1Actions.push(document.getElementById("Pl1Action2").value);
+
+			var serial = $(config).serialize();
+
+			//var p1Actions = document.getFormValues
+
+			var p2Actions = document.getElementById("Pl2Action1").value;
+			//p2Actions.push(document.getElementById("Pl2Action2").value);
+			
+
+			console.log(serial)
+			console.log("\n")
+			console.log(p2Actions)
 		}
 	</script>
 </body>
