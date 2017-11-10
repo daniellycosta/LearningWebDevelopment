@@ -2,7 +2,7 @@
 <html lang="pt-br">
 
 <head>
-	<title>Saiot Server</title>
+	<title>Teoria dos Jogos</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -13,6 +13,14 @@
 </head>
 
 <body>
+	<style type="text/css">
+		.celulajogo>input{
+			width: 100%;
+		}
+		.celulajogo {
+			margin-bottom:10px;
+		}
+	</style>
 
 	<div class="jumbotron text-center">
 		<h1> Equilíbrio de Nash em Jogos Fictícios </h1>
@@ -20,27 +28,47 @@
 	</div>
 	
 	<div class="container">
-
-			<div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
+		<div class="row">
+			<div class="col-xs-12">
 				<h2>Configurations:</h2>
-					<form action="">
+				<form action="javascript:deucerto()">
 					<h3>Player 1:</h3>
-					<label> Action 1: <br/><input type="text" placeholder="" name="Pl1Action1"></label> 
-					<label> Value: <br/><input type="text" placeholder="" name="Pl1Action1Value">
-					<br/><br/>
-					<label> Action 2: <br/><input type="text" placeholder="" name="Pl1Action2"></label><br/><br/>
-					<h3>Player 2:</h3>
-					<label> Action 1: <br/><input type="text" placeholder="" name="Pl2Action1"></label><br/><br/>
-					<label> Action 2: <br/><input type="text" placeholder="" name="Pl2Action2"></label><br/><br/>
-				
-			
+					<div class="celulajogo col-xs-12 col-sm-6">
+						<label>Action 2: </label><br>
+						<input type="text" placeholder="" name="Pl1Action2">
+					</div>
+					<div class="celulajogo col-xs-12 col-sm-6">
+						<label>Action 2: </label><br>
+						<input type="text" placeholder="" name="Pl1Action2">
+					</div>
+					<div class="celulajogo col-xs-12 col-sm-6">
+						<label>Action 2: </label><br>
+						<input type="text" placeholder="" name="Pl1Action2">
+					</div>
+					<div class="celulajogo col-xs-12 col-sm-6">
+						<label>Action 2: </label><br>
+						<input type="text" placeholder="" name="Pl1Action2">
+					</div>
+					<div class="celulajogo col-xs-12 col-sm-6">
+						<label>Action 2: </label><br>
+						<input type="text" placeholder="" name="Pl1Action2">
+					</div>
+					<div class="celulajogo col-xs-12 col-sm-6">
+						<label>Action 2: </label><br>
+						<input type="text" placeholder="" name="Pl1Action2">
+					</div>
+					
 					<button type="submit">Save Changes</button> 
 
 
 				</form>
 			</div>
-			
+		</div>
 	</div>
-		
+	<script type="text/javascript">
+		function deucerto(){
+			console.log("deu certo demais")
+		}
+	</script>
 </body>
 </html>
