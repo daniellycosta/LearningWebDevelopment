@@ -50,7 +50,7 @@
 					<h3>Player 1:</h3>
 					<div class="celulajogo col-xs-12 col-sm-6">
 						<label>Action 1: </label><br>
-						<input type="text" placeholder="" id="Pl1Action1">
+						<input type="text" id="Pl1Action1">
 					</div>
 					<div class="celulajogo col-xs-12 col-sm-6">
 						<label>Value: </label><br>
@@ -58,7 +58,7 @@
 					</div>
 					<div class="celulajogo col-xs-12 col-sm-6">
 						<label>Action 2: </label><br>
-						<input type="text" placeholder="" id="Pl1Action2">
+						<input type="text" id="Pl1Action2">
 					</div>
 					<div class="celulajogo col-xs-12 col-sm-6">
 						<label>Value: </label><br>
@@ -67,7 +67,7 @@
 					<h3>Player 2:</h3>
 					<div class="celulajogo col-xs-12 col-sm-6">
 						<label>Action 1: </label><br>
-						<input type="text" placeholder="" id="Pl2Action1">
+						<input type="text" id="Pl2Action1">
 					</div>
 					<div class="celulajogo col-xs-12 col-sm-6">
 						<label>Value: </label><br>
@@ -75,7 +75,7 @@
 					</div>
 					<div class="celulajogo col-xs-12 col-sm-6">
 						<label>Action 2: </label><br>
-						<input type="text" placeholder="" id="Pl2Action2">
+						<input type="text" id="Pl2Action2">
 					</div>
 					<div class="celulajogo col-xs-12 col-sm-6">
 						<label>Value: </label><br>
@@ -84,10 +84,42 @@
 					<button type="submit">Save Changes</button> 
 				</form>
 			</div>
+
+			<div class="col-xs-12" id = 'result'>
+			</div>
 		</div>
 	</div>
 	<script type="text/javascript">
 		var formPlace = document.getElementById("config")
+
+		function getNashEq(actions1,actions2,values1,values2){
+			var nTurns = 1;
+			var p1Choice, p2Choice;
+			var p1PrevChoices,p2PrevChoices;
+			var p1Probs = [0,0],p2Probs = [0,0];
+
+			if(nTurns==1){
+				//PLAYERS CHOOSING THEIR FIRST MOVE
+				p1Choice = Math.floor(Math.random()*2);
+				p2Choice = Math.floor(Math.random()*2);
+
+				p1PrevChoices = p1Choice;
+				p2PrevChoices = p2Choice;
+
+				p1Probs[p1Choice] = 1;
+				p2Probs[p2Choice] = 1;
+				
+				//DEBUG
+				console.log(p1Choice);
+				console.log(p2Choice);
+				//CALC DA PROBABILIDADE A SER IMPLEMENTADA
+				// var x = (Math.random() * 1);
+    			//x = x.toFixed(1)
+			}
+			else{
+				
+			}
+		}
 
 		function getFormValues(){
 			var p1Actions = [document.getElementById("Pl1Action1").value, document.getElementById("Pl1Action2").value];
@@ -130,6 +162,8 @@
 			myTable+="</div>"
 			myTable+="</div>"
 			myTable+="</div>"
+
+			getNashEq(p1Actions,p2Actions,p1Values,p2Values);
 
  			config.innerHTML = myTable;
 
