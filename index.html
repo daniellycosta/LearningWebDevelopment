@@ -14,6 +14,24 @@
 		.celulajogo {
 			margin-bottom:10px;
 		}
+
+		.rotate {
+
+			/* Safari */
+			-webkit-transform: rotate(-90deg);
+
+			/* Firefox */
+			-moz-transform: rotate(-90deg);
+
+			/* IE */
+			-ms-transform: rotate(-90deg);
+
+			/* Opera */
+			-o-transform: rotate(-90deg);
+
+			/* Internet Explorer */
+			filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+			}
 	</style>
 </head>
 
@@ -23,7 +41,7 @@
 		<h1> Nash Equilibrium Calculator </h1>
 		<h3>Using best response dynamics for two players games</h3>
 	</div>
-	
+
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12">
@@ -36,7 +54,7 @@
 					</div>
 					<div class="celulajogo col-xs-12 col-sm-6">
 						<label>Value: </label><br>
-						<input class="form-control" type="number" value="0" id="Pl1Value1">
+						<input class="form-control" type="number"  id="Pl1Value1">
 					</div>
 					<div class="celulajogo col-xs-12 col-sm-6">
 						<label>Action 2: </label><br>
@@ -44,7 +62,7 @@
 					</div>
 					<div class="celulajogo col-xs-12 col-sm-6">
 						<label>Value: </label><br>
-						<input class="form-control" type="number" value="0" id="Pl1Value2">
+						<input class="form-control" type="number"  id="Pl1Value2">
 					</div>
 					<h3>Player 2:</h3>
 					<div class="celulajogo col-xs-12 col-sm-6">
@@ -53,7 +71,7 @@
 					</div>
 					<div class="celulajogo col-xs-12 col-sm-6">
 						<label>Value: </label><br>
-						<input class="form-control" type="number" value="0" id="Pl2Value1">
+						<input class="form-control" type="number"  id="Pl2Value1">
 					</div>
 					<div class="celulajogo col-xs-12 col-sm-6">
 						<label>Action 2: </label><br>
@@ -61,7 +79,7 @@
 					</div>
 					<div class="celulajogo col-xs-12 col-sm-6">
 						<label>Value: </label><br>
-						<input class="form-control" type="number" value="0" id="Pl2Value2">
+						<input class="form-control" type="number"  id="Pl2Value2">
 					</div>
 					<button type="submit">Save Changes</button> 
 				</form>
@@ -69,7 +87,7 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-		var form = document.getElementById("config")
+		var formPlace = document.getElementById("config")
 
 		function getFormValues(){
 			var p1Actions = [document.getElementById("Pl1Action1").value, document.getElementById("Pl1Action2").value];
@@ -77,9 +95,43 @@
 			var p1Values = [document.getElementById("Pl1Value1").value, document.getElementById("Pl1Value2").value];
 			var p2Values = [document.getElementById("Pl2Value1").value, document.getElementById("Pl2Value2").value];
 
-			config.innerHTML = '';
 
-			showTable()
+		    var myTable = "<div class='container'>" 
+		    myTable+="<div class='row'>"
+		    myTable+="<div class='col-xs-12'>"
+		    myTable+="<h3 style = 'text-align: center'>Player 2</h3>"
+		    myTable+="</div>"
+
+		    myTable+="<div class='col-xs-2'>"
+			myTable+="<h3 class = 'rotate'>Player 1 </h3>"
+			myTable+="</div>"
+
+			myTable+="<div class='col-xs-10'>"    
+			myTable += "<table class='table table-striped'>"
+			myTable+="<tr>"
+			myTable+= "<th> - </th>"
+			myTable+="<th>" + p2Actions[0] + "</th>"
+			myTable+= "<th>" + p2Actions[1]+"</th>"
+			myTable+="</tr>"
+
+			myTable+="<tr>"
+			myTable+="<th>" + p1Actions[0] + "</th>"
+			myTable+="<td>" + p1Values[0] + ", " + p2Values[0] +"</td>"
+			myTable+="<td>" + p1Values[0] + ", " + p2Values[1] +"</td>"
+			myTable+="</tr>"
+
+			myTable+="<tr>"
+			myTable+="<th>" + p1Actions[1] + "</th>"
+			myTable+="<td>" + p1Values[1] + ", " + p2Values[0] +"</td>"
+			myTable+="<td>" + p1Values[1] + ", " + p2Values[1] +"</td>"
+			myTable+="</tr>"
+
+			myTable+="</table>"
+			myTable+="</div>"
+			myTable+="</div>"
+			myTable+="</div>"
+
+ 			config.innerHTML = myTable;
 
 			//DEBUG
 			console.log(p1Actions)
@@ -89,9 +141,6 @@
 			console.log(p2Values)
 		}
 
-		function showTable(){
-			config.innerHTML = 'tabela aparecera aqui!';
-		}
 	</script>
 </body>
 </html>
