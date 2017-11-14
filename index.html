@@ -90,6 +90,8 @@
 		</div>
 	</div>
 	<script type="text/javascript">
+	
+	//COLOCAR EM ARQUIVO SEPARADO
 		var formPlace = document.getElementById("config")
 
 		function getNashEq(actions1,actions2,values1,values2){
@@ -108,16 +110,37 @@
 
 				p1Probs[p1Choice] = 1;
 				p2Probs[p2Choice] = 1;
+
+				nTurns++;
 				
 				//DEBUG
 				console.log(p1Choice);
 				console.log(p2Choice);
-				//CALC DA PROBABILIDADE A SER IMPLEMENTADA
-				// var x = (Math.random() * 1);
-    			//x = x.toFixed(1)
+			}
+
+			//CORRIGIR E DESENVOLVER LOGICA
+			else if(nTurns==2){
+				var maxRet;
+
+				for (var i = 0 ; i < actions1.length; i++) {
+					if (actions1[i]>actions2[i]{
+
+					}
 			}
 			else{
-				
+				//CALC DA PROBABILIDADE A SER IMPLEMENTADA
+				var randProb = (Math.random() * 1);
+    			randProb = randProb.toFixed(1);
+
+    			for (var i = p1Probs.length - 1; i >= 0; i--) {
+    				
+					if (randProb<=p1Probs[i]) {
+						p1Choice = 
+						p1PrevChoices = p1PrevChoices + p1Choice;
+    				}			
+    				
+    			}
+	
 			}
 		}
 
