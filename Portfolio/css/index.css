@@ -1,0 +1,40 @@
+body {
+  position: relative;
+  margin-top:62px;
+} 
+.blue {
+  background: #9ac1ff;
+  height: 500px;
+}
+.rose{
+  background: #db7093;
+  height: 500px;
+}
+.green{
+  background: #a2cd5a;
+  height: 500px;
+}
+
+.icones{
+  width:100px;
+  border-color: white;
+  border-width: 10px;
+  border-style: solid;
+  border-radius: 50%;
+  }
+.perfil{
+  width:404px;
+  height:404px;
+  border-color: white;
+  border-width: 10px;
+  border-style: solid;
+  border-radius: 50%;
+}
+.portfolio{
+  width:304px;
+  height:304px;
+  border-color: white;
+  border-width: 10px;
+  border-style: solid;
+  border-radius: 50%;
+}
