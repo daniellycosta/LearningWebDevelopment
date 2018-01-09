@@ -77,14 +77,14 @@ let Header = (props) =>(
   const buttonName = "Buy Now"
   
   let TransportationApp = () =>(
-    <div>
+   <div>
       <Header title = "Welcome to React Transportation" description = "The best place to buy vehicles online"/>
       
       <div className="row text-center">
-      <SectionTitle secTitle = "Choose Options"/>
-      <Checkbox label = "New Only" id = "coding" name = "interest" value = "coding"/>
-      <Selection label = "Select Type" values = {categories} tags = {categories}/>
-      </div>
+        <SectionTitle secTitle = "Choose Options"/>
+        <Checkbox label = "New Only" id = "coding" name = "interest" value = "coding"/>
+        <Selection label = "Select Type" values = {categories} tags = {categories}/>
+       </div>
      
       <SectionTitle secTitle = {categories[1]}/>
       <Table tableHeader = {header} tableData={["2013","A","$32000"]} buttonLabel = {buttonName}/>
