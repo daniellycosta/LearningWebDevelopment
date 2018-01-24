@@ -1,0 +1,109 @@
+const questions = [
+  {
+    title: "React is a...",
+    options:["Framework","Library","Video","City"],
+    correctAnswer:"Library",
+  },{
+    title: "React was created by ... developers",
+    options:["Google","IBM","Facebook","Instagram"],
+    correctAnswer:"Instagram",
+  },{
+    title: "Which one is more like ReactJS?",
+    options:["Vue","Angular","C++","All"],
+    correctAnswer:"Vue",
+  },{
+    title: "React is used on about ... websites (Acording to Libscore)",
+    options:[5000,1500000,1500,50000],
+    correctAnswer:1500,
+  },{
+    title: "React was released in...",
+    options:[2010,2011,2012,2013, 2014, 2015],
+    correctAnswer:2013,
+  },{
+    title: "React...was created for building apps for iOS, Android and Windows Phone",
+    options:["Mobile","Native","App","Creative"],
+    correctAnswer:"Native",
+  },{
+    title: "The React framework for mobile apps development was released in...",
+    options:[2010, 2011,2012,2013,2014,2015,2016,2017],
+    correctAnswer:2015,
+  },{
+    title: "React come with a REST tool for making HTTP request",
+    options:["True","False"],
+    correctAnswer:"False",
+  },{
+    title: "React does not impose any restrictions on your data architecture",
+    options:["True","False"],
+    correctAnswer:"True",
+  },{
+    title: "React is popular because it ...",
+    options:["is useful and time saving","is used by Google","has a pretty name","is an easy learning framework"],
+    correctAnswer:"is useful and time saving",
+  },
+]
+
+class Trivia extends React.Component{
+  constructor(props){
+    super(props)
+    this.state = {correctScore:0, incorrectScore:0, questionNumber:0}
+    this.verifyAnswer = this.verifyAnswer.bind(this)
+  }
+  
+  verifyAnswer = (choosenOption) => {
+      if(choosenOption === questions[this.state.questionNumber].correctAnswer){
+        this.setState({correctScore: this.state.correctScore + 1})
+      } else{
+        this.setState({incorrectScore: this.state.incorrectScore + 1})
+      }
+      this.setState({questionNumber: this.state.questionNumber + 1})
+  }
+  
+  render(){
+    return(
+      <div>
+        <div className="text-center jumbotron">
+        <h1> React Trivia Game </h1>
+      </div>
+        
+        <div style = {{margin:5}} className = "row text-center">
+          <div className = "col-6">
+            <h2>{this.state.questionNumber+1}. {questions[this.state.questionNumber].title}</h2>
+            <Questions onClick = {this.verifyAnswer} question = {questions[this.state.questionNumber]}/>
+          </div>
+          
+          <div className = "col-6">
+            <h2> Score: </h2>
+            <Score label="Correct" score={this.state.correctScore}/>
+            <Score label="Incorrect" score={this.state.incorrectScore}/>
+            
+            <button onClick={() => this.setState({correctScore:0, incorrectScore:0, questionNumber:0})} className = "btn btn-dark" > Reset </button>
+          </div>
+        </div>
+      </div>
+    )
+  }
+}
+
+const Score = (props) => (
+  <h3>{props.label}: {props.score}</h3>
+)
+
+const Questions = (props) => {
+  let alternativesToRender = props.question.options.map( (option) =>{
+    return(
+      <div className = "col-12">
+        <button onClick = {() => props.onClick(option)} className = "btn btn-block" style = {{margin:5}}> {option} </button>
+      </div>
+    )
+  })
+   return(
+   <div>
+     {alternativesToRender} 
+   </div>
+   )
+}
+ 
+ReactDOM.render(
+    <Trivia/>,
+  document.getElementById("root")
+)

@@ -1,0 +1,45 @@
+class App extends React.Component{
+  constructor(props){
+    super(props)
+    this.state = {text:""}
+  }
+  
+  handleChange=(e)=>{
+    this.setState(
+      {text: e.target.value}
+    )
+  }
+  
+  render(){
+    return(
+      <div>
+        <div className="jumbotron" style={{textAlign:"center"}}>
+          <h1>Markdown Online Editor</h1>
+        </div>
+        <div className="container">
+          <div className="row">
+            <div className="col-md-6 col-sm-12 editor">
+              <form>
+                <textarea 
+                  className="form-control"
+                  rows="15"
+                  value={this.state.text}
+                  onChange={this.handleChange}></textarea>
+                <button style={{display:'none'}} type='submit'></button>
+              </form>
+           </div>
+          <div 
+            className="col-md-6 col-sm-12" 
+            dangerouslySetInnerHTML={{__html: marked(this.state.text)}}>
+          </div>
+         </div>
+        </div>
+       </div>
+    );
+  }
+}
+
+ReactDOM.render(
+  <App/>,
+  document.getElementById("root")
+)

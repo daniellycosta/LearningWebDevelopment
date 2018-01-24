@@ -1,0 +1,96 @@
+const Header = (props) =>(
+  <div className = "text-center jumbotron">
+    <h2>{props.title}</h2>
+      {props.description}<p/>
+  </div>
+)
+
+const SectionTitle = (props) => (
+  <div className = "col-12 text-center">
+    <h2>{props.secTitle}</h2>
+  </div>
+)
+
+const Checkbox = (props)=>(
+  <div className = "col-6">
+    {props.label + " "}
+    <input type = "checkbox" id = {props.id} name = {props.name} value = {props.value}/>
+  </div>
+)
+
+const SelectionItem = (props) => (
+  <option value = {props.value}> {props.tag} </option>
+)
+
+const Selection = (props) =>(
+    <div className = "col-6"><p/>
+      {props.label + "  "}
+      <select>
+        <SelectionItem value = {props.values[0]} tag = {props.tags[0]}/>
+        <SelectionItem value = {props.values[1]} tag = {props.tags[1]}/>
+        <SelectionItem value = {props.values[2]} tag = {props.tags[2]}/>
+        <SelectionItem value = {props.values[3]} tag = {props.tags[3]}/>
+      </select>
+    </div>
+)
+
+const Table = (props) =>(
+  <div className = "col-10 container">
+    <ul>
+        <table className = "table table-responsive-sm">
+          <thead className = "thead-light">
+            <tr/>
+                <th>{props.tableHeader[0]}</th>
+                <th>{props.tableHeader[1]}</th>
+                <th>{props.tableHeader[2]}</th>
+                <th>{props.tableHeader[3]}</th>
+            <tr/>
+          </thead>
+          <tbody>
+              <tr/>
+                <td className = "table-light">{props.tableData[0]}</td>
+                <td className = "table-light">{props.tableData[1]}</td>
+                <td className = "table-light">{props.tableData[2]}</td>
+                <td className = "table-light"><button className="btn btn-dark">{props.buttonLabel}</button></td>
+              <tr/>
+          </tbody>
+        </table>
+    </ul>
+  </div>
+)
+
+const categories = ["All", "Cars", "Trucks", "Convertibles"]
+const header = ["Year","Model","Price","Buy"]
+const buttonName = "Buy Now"
+
+const TransportationApp = () =>(
+  <div>
+    <Header title = "Welcome to React Transportation" description = "The best place to buy vehicles online"/>
+    
+    <div className="row text-center">
+    <SectionTitle secTitle = "Choose Options"/>
+    <Checkbox label = "New Only" id = "coding" name = "interest" value = "coding"/>
+    <Selection label = "Select Type" values = {categories} tags = {categories}/>
+    </div>
+   
+    <SectionTitle secTitle = {categories[1]}/>
+    <Table tableHeader = {header} tableData={["2013","A","$32000"]} buttonLabel = {buttonName}/>
+    <Table tableHeader = {header} tableData={["2011","B","$4400"]} buttonLabel = {buttonName}/>
+    <Table tableHeader = {header} tableData={["2016","B","$15500"]} buttonLabel = {buttonName}/>
+    
+    <SectionTitle secTitle = {categories[2]}/>
+    <Table tableHeader = {header} tableData={["2014","D","$18000"]} buttonLabel = {buttonName}/>
+    <Table tableHeader = {header} tableData={["2013","E","$5200"]} buttonLabel = {buttonName}/>
+    
+    <SectionTitle secTitle = {categories[3]}/>
+    <Table tableHeader = {header} tableData={["2009","F","$2000"]} buttonLabel = {buttonName}/>
+    <Table tableHeader = {header} tableData={["2010","G","$6000"]} buttonLabel = {buttonName}/>
+    <Table tableHeader = {header} tableData={["2012","H","$12500"]} buttonLabel = {buttonName}/>
+    <Table tableHeader = {header} tableData={["2017","M","$50000"]} buttonLabel = {buttonName}/>
+  </div>
+)
+
+ReactDOM.render(
+  <TransportationApp/>,
+  document.getElementById("root")
+)
