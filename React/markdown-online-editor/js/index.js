@@ -45,7 +45,7 @@ var App = function (_React$Component) {
             { className: "row" },
             React.createElement(
               "div",
-              { className: "col-md-6 col-sm-12 editor" },
+              { className: "col-lg-6 col-md-12 editor" },
               React.createElement(
                 "form",
                 null,
@@ -58,7 +58,7 @@ var App = function (_React$Component) {
               )
             ),
             React.createElement("div", {
-              className: "col-md-6 col-sm-12",
+              className: "col-lg-6 col-md-12",
               dangerouslySetInnerHTML: { __html: marked(this.state.text) } })
           )
         )
