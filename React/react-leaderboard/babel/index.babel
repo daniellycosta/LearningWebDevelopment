@@ -1,0 +1,92 @@
+const allTimeApi = 'https://fcctop100.herokuapp.com/api/fccusers/top/alltime'
+const recentApi = 'https://fcctop100.herokuapp.com/api/fccusers/top/recent'
+
+class App extends React.Component{
+  constructor(props){
+    super(props)
+  }
+  
+  render(){
+    return(
+      <div>
+          <div className="banner grad">
+            <img src="http://metakata.altervista.org/wordpress/wp-content/uploads/2015/08/freecodecamp_white.png" alt="FreeCodeCamp Logo" className="logo "/>
+            <h1> FreeCodeCamp Leaderboard </h1>
+          </div>
+          <TableContent/>
+       </div>
+    )
+  }
+  
+}
+ 
+class TableContent extends React.Component{
+  constructor(props){
+    super(props)
+    this.state = {
+      allTimeRequested:false,
+      usersData:[],
+    }   
+  };
+  
+  getFetch(){
+    fetch(this.state.allTimeRequested? allTimeApi : recentApi)
+      .then(results => results.json())
+      .then(data => {
+        let tableData = data.map((user,index)=>(
+          <tr key={user.username} style={{textAlign: 'center'}}>
+            <th>{index+1}</th>
+            <td>
+              <img src={user.img} className="profilePhotos" alt={`${user.username} profile photo`}/>
+              <a href={`https://www.freecodecamp.com/${user.username}`}>{user.username}</a>
+            </td>
+            <td>{user.recent}</td>
+            <td>{user.alltime}</td>
+          </tr>
+          ))
+          this.setState({
+            usersData: tableData,
+          })
+      })
+  }
+  
+  showBestRecent = () => {
+    this.setState({allTimeRequested:false},()=>this.getFetch())
+  }
+  
+  showBestAllTime = () => {
+    this.setState({allTimeRequested:true},()=>this.getFetch())
+
+  }
+  
+  componentDidMount(){
+    this.getFetch()
+ }
+
+ render(){
+   return(
+     <div className="col-12" style={{textAlign: 'center'}}>
+      <table className="table table-striped table-bordered tableShadow">
+        <th>#</th>
+        <th>Camper name</th>
+        
+        <th className={this.state.allTimeRequested? "notSelected":"selected grad"}
+          onClick={this.showBestRecent} >Points in past 30 days</th>
+        
+        <th className={this.state.allTimeRequested? "selected grad":"notSelected"} 
+          onClick={this.showBestAllTime}>All time points</th>
+        
+        <tbody>
+          {this.state.usersData}
+        </tbody>
+      </table>
+     </div>
+   )
+ } 
+}
+
+ReactDOM.render(
+  <App/>,
+  document.getElementById("root")
+)
+
