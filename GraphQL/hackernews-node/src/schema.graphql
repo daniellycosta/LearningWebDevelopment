@@ -1,3 +1,7 @@
+#Schema Definition
+#Query: Quais operações podem ser feitas à api
+#info é o nome da operação e String é o retorno
+
 type Query{
     info: String!
     feed:[Link!]!
@@ -5,8 +9,8 @@ type Query{
 
 type Mutation{
     post(url: String!, description: String!): Link!
-    updateLink(id:String!,url:String, description: String):Link!
-    deleteLink(id:String!):Link!
+    #updateLink(id:String!,url:String, description: String):Link!
+    #deleteLink(id:String!):Link!
 }
 
 type Link{
